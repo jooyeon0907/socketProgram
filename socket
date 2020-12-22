@@ -1,0 +1,64 @@
+
+@ 소켓(Socket)
+    - 소프트웨어로 작성된 추상적인 개념의 통신 접속점이라고 할 수 잇는데 
+        네트웍 응용 프로그램은 소켓을 통하여 통신망으로 데이터를 송수신하게 된다. 
+        소켓은 응용 프로그램에서 TCP/IP를 이용하는 창구 역할을 하며 응용 프로그램과 소켓 사이의 인터페이스 역할을 함
+        -> 클라이언트 어플리케이션은 서버와 통신을 하기 위해 어떠한 메시지 또는 테이터를 서버에 보내려함
+            -> 네트워크에 연결하여 서버에 접속해야됨 -> 소켓을 통하여 네트워크에 접속 (연결장치, 인터페이스 역할)
+    - OS에서 제공하는 인터페이스 
+    - 어플리케이션과 TCP/IP 사이에 존재
+
+@ 소켓의 작동방식
+    - 프로그램에서 소켓에 관련된 작업을 수행하면, OS는 그 요청을 받아들여서 새로운 소켓을 만들어줌
+        -> 오로지 이 소켓으로만 외부 네트워크와 통신을 할 수 있다 (창구의 역할)
+    
+
+@ 서버를 만들기 위한 절차
+    1. socket() : 소켓 생성 -> 다른 컴퓨터와 통신할 개찰구 만들기
+    2. bind()   : 내가 만드려는 서버의 ip주소와 포트를 소켓에 할당하는 역할을 수행
+    3. listen() : 응답해줄 수 있도록 대기상태로 만들기
+    4. accept() : 어떤 클라이언트로부터 연결 요청이 왔으면 수락해줌
+    5. send(), recv(): send()를 실행할 때는 문자열을 인코딩해서 보내고, recv()를 할 때는 디코딩해서 받기
+    6. close()  : 통신이 끝났으면 연결 끊어주기 
+
+@ 클라이언트를 만들기 위한 절차
+    1. socket() : 통신을 위한 소켓 생성 
+    * 클라이언트에서는 bind 처리 안함
+    2. connet() : 서버에 연결을 요청. 
+    3. send(), recv(): send()를 실행할 때는 문자열을 인코딩해서 보내고, recv()를 할 때는 디코딩해서 받기
+    4. close()  : 통신이 끝났으면 연결 끊어주기 
+    *** 목적지 포트번호는 랜덤으로 연결됨
+
+
+** wireshark로  패킷분석2.png -> 3-way-handshake / 4-wqy-handshake 과정보기
+
+
+
+
+* 파이썬 소켓 프로그래밍 - 간단한 채팅 프로그램 구현 (코드)
+https://seolin.tistory.com/97
+https://seolin.tistory.com/98
+
+https://websecurity.tistory.com/91#recentEntries
+
+
+* 소켓프로그래밍 설명
+https://recipes4dev.tistory.com/153
+
+
+* 와이어샤크로 패킷 분석
+https://blog.d0ngd0nge.xyz/python-socket-sokaes/
+
+* TCP 헤더
+https://evan-moon.github.io/2019/11/10/header-of-tcp/
+
+* scapy
+https://system-0323.tistory.com/18
+
+
+* 와이어셔크 강의
+https://www.inflearn.com/course/wireshark_boanproject#description
+
+
+* 포트 번호 사용법
+https://snowdeer.github.io/common-sense/2018/02/01/understanding-about-port/
